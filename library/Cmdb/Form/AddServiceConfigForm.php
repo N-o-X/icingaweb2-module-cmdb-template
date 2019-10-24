@@ -41,4 +41,5 @@ class AddServiceConfigForm extends CompatForm
             'label' => 'Add service',
         ]);
     }
+    
 }
