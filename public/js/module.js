@@ -13,6 +13,7 @@
         },
         rendered: function(event) {
             var $container = $('<div>');
+            console.dir(event);
             $(event.target).append($container[0]);
             $('.cmdb-flatpickr').flatpickr({
                 appendTo: $container[0],
