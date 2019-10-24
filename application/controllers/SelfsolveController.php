@@ -31,25 +31,23 @@ class SelfsolveController extends Controller{
         ]);
 
         $this->addControl($addConfigButton);
-        
+
         $configList = new SelfSolveConfigList($configs);
         $this->addContent($configList);
-        
+
     }
 
     public function addAction()
     {
-
         $this->setTitle($this->translate('Add config'));
 
-        $form = new AddServiceConfigForm();
-        $form->handleRequest(ServerRequest::fromGlobals());
+        $request = ServerRequest::fromGlobals();
+        $params = $request->getParsedBody();
+        $form = new AddServiceConfigForm(isset($params['type']) ? $params['type'] : '');
+        $form->handleRequest($request);
 
         $this->redirectForm($form, 'cmdb/selfsolve');
 
         $this->addContent($form);
     }
-
-
-
 }
