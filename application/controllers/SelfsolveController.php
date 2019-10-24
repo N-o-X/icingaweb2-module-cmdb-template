@@ -2,8 +2,10 @@
 
 namespace Icinga\Module\Cmdb\Controllers;
 
+use GuzzleHttp\Psr7\ServerRequest;
 use Icinga\Module\Cmdb\Common\Controller;
 use Icinga\Module\Cmdb\Common\Database;
+use Icinga\Module\Cmdb\Form\AddServiceConfigForm;
 use Icinga\Module\Cmdb\Widget\SelfSolveConfigList;
 use ipl\Sql\Select;
 use ipl\Web\Widget\ActionLink;
@@ -34,4 +36,20 @@ class SelfsolveController extends Controller{
         $this->addContent($configList);
         
     }
+
+    public function addAction()
+    {
+
+        $this->setTitle($this->translate('Add config'));
+
+        $form = new AddServiceConfigForm();
+        $form->handleRequest(ServerRequest::fromGlobals());
+
+        $this->redirectForm($form, 'cmdb/selfsolve');
+
+        $this->addContent($form);
+    }
+
+
+
 }

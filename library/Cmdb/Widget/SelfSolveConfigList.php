@@ -11,7 +11,7 @@ class SelfSolveConfigList extends BaseHtmlElement{
 
     protected $tag = 'table';
 
-    protected $defaulAttributes = [
+    protected $defaultAttributes = [
         'class' => 'common-table table-row-selectable',
         'data-base-target' => '_next'
     ];
