@@ -6,6 +6,12 @@ CREATE TABLE `host` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+CREATE TABLE `exec_log` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`pid` int NOT NULL,
+`log` text NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE `config` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
