@@ -31,6 +31,12 @@ class AddServiceConfigForm extends CompatForm
             'required' => true,
         ]);
 
+        $this->addElement('select', 'type', array(
+            'label'        => 'Type',
+            'multiOptions' => ['Filesystems', 'Processes'],
+            'required'     => true,
+        ));
+
         $this->addElement('submit', 'submit', [
             'label' => 'Add service',
         ]);
