@@ -1,0 +1,6 @@
+{
+    "name": "cmdb",
+    "require": {
+        "guzzlehttp/psr7": "^1.6"
+    }
+}
