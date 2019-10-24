@@ -7,6 +7,7 @@ use http\Url;
 use Icinga\Module\Cmdb\Common\Controller;
 use Icinga\Module\Cmdb\Common\Database;
 use Icinga\Module\Cmdb\Form\AddHostForm;
+use Icinga\Module\Cmdb\Form\SearchForm;
 use Icinga\Module\Cmdb\Widget\HostList;
 use Icinga\Module\Monitoring\Web\Navigation\Action;
 use Icinga\User;
@@ -34,6 +35,14 @@ class HostsController extends Controller
             ->from('host')
             ->columns('*');
 
+        $searchForm = new SearchForm();
+        $searchForm->handleRequest(ServerRequest::fromGlobals());
+
+        if ($search = $searchForm->getValue('search')) {
+            $select->where(['name like ?' => "%$search%"]);
+        }
+
+        $this->addControl($searchForm);
         $this->addControl($this->createPaginationControl($this->getDb(), $select));
 
         $hosts = $this->getDb()->select($select);
