@@ -3,6 +3,7 @@
 namespace Icinga\Module\Cmdb\Form;
 
 use Icinga\Module\Cmdb\Common\Database;
+use Icinga\Module\Cmdb\Form\Validator\LengthValidator;
 use Icinga\Web\Notification;
 use ipl\Web\Compat\CompatForm;
 
@@ -32,6 +33,7 @@ class EditHostForm extends CompatForm
             'label' => 'OS',
             'placeholder' => 'Enter host OS',
             'required' => true,
+            'validators' => [new LengthValidator(15)],
         ]);
 
         $this->addElement('text', 'created', [
