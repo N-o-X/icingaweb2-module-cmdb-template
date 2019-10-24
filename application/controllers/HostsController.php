@@ -34,6 +34,8 @@ class HostsController extends Controller
             ->from('host')
             ->columns('*');
 
+        $this->addControl($this->createPaginationControl($this->getDb(), $select));
+
         $hosts = $this->getDb()->select($select);
 
         /*foreach ($hosts as $host) {
