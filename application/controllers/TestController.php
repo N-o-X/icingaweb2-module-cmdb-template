@@ -3,8 +3,17 @@
 namespace Icinga\Module\Cmdb\Controllers;
 
 use GuzzleHttp\Psr7\ServerRequest;
+use Icinga\Controllers\ErrorController;
 use Icinga\Module\Cmdb\Common\Database;
 use Icinga\Module\Cmdb\Form\HelloForm;
+use Icinga\Module\Director\Cli\Command;
+use Icinga\Module\Monitoring\Backend\MonitoringBackend;
+use Icinga\Module\Monitoring\Command\Object\ScheduleHostCheckCommand;
+use Icinga\Module\Monitoring\Command\Object\ScheduleServiceCheckCommand;
+use Icinga\Module\Monitoring\Command\Transport\ApiCommandTransport;
+use Icinga\Module\Monitoring\Command\Transport\CommandTransport;
+use Icinga\Module\Monitoring\Object\Host;
+use Icinga\Module\Monitoring\Object\Service;
 use Icinga\Web\Session;
 use ipl\Html\Html;
 use ipl\Sql\Select;
@@ -93,5 +102,19 @@ class TestController extends CompatController
         foreach ($entries as $entry) {
             $this->addContent(Html::tag('div', $entry->log));
         }
+    }
+
+    public function checkhostAction()
+    {
+        $hostName = $this->params->getRequired('host');
+
+        $host = new Host(MonitoringBackend::instance(), $hostName);
+
+        $check = new ScheduleHostCheckCommand();
+
+        $check->setObject($host)
+            ->setForced()
+            ->setCheckTime(time());
+        (new CommandTransport())->send($check);
     }
 }
