@@ -26,7 +26,7 @@ class SelfsolveController extends Controller{
 
         $configs = $this->getDb()->select($select);
 
-        $addConfigButton = new ActionLink($this->translate('Add Confg'),'cmdb/selfsolve/add','plus',[
+        $addConfigButton = new ActionLink($this->translate('Add Config','Context: Add new configuration which will be stored in the mysqdl config tables.'),'cmdb/selfsolve/add','plus',[
             'data-base-target' => '_next'
         ]);
 

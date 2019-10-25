@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cmdb Module (0.0.0)\n"
 "Report-Msgid-Bugs-To: dev@icinga.com\n"
-"POT-Creation-Date: 2019-10-23 14:14+0000\n"
-"PO-Revision-Date: 2019-10-23 16:21+0200\n"
+"POT-Creation-Date: 2019-10-25 13:02+0000\n"
+"PO-Revision-Date: 2019-10-25 15:04+0200\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,9 +20,21 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: ../../../../application/controllers/HostsController.php:43
+#: ../../../../application/controllers/SelfsolveController.php:29
+#, fuzzy
+msgctxt ""
+"Context: Add new configuration which will be stored in the mysqdl config "
+"tables."
+msgid "Add Config"
+msgstr "Neue Config erstellen"
+
+#: ../../../../application/controllers/HostsController.php:63
 msgid "Add Host"
 msgstr "Host hinzufügen"
+
+#: ../../../../application/controllers/SelfsolveController.php:42
+msgid "Add config"
+msgstr ""
 
 #: ../../../../configuration.php:7
 msgid "Backend"

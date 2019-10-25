@@ -28,6 +28,11 @@ $cmdbSection->add('Hello', [
     'priority' => 2
 ]);
 
+$cmdbSection->add('SelfSolve', [
+    'url' => 'cmdb/selfsolve',
+    'priority' => 3
+]);
+
 $this->providePermission( 'cmdb/hosts/*', 'Allows to do everything');
 $this->providePermission( 'cmdb/hosts/view', 'Allows to view hosts');
 $this->providePermission( 'cmdb/hosts/add', 'Allows to add hosts');
