@@ -3,6 +3,7 @@
 namespace Icinga\Module\Cmdb\Form;
 
 use Icinga\Module\Monitoring\Backend\MonitoringBackend;
+use ipl\Html\Html;
 use ipl\Web\Compat\CompatForm;
 
 class AddServiceConfigForm extends CompatForm
@@ -49,6 +50,18 @@ class AddServiceConfigForm extends CompatForm
             'class'        => 'autosubmit',
             'required'     => true,
         ]);
+
+        $collapsible = Html::tag('div', [
+            'class'                 => 'collapsible',
+            'data-toggle-element'   => 'h3',
+            'data-visible-height'   => 0
+        ]);
+
+        $collapsible->add(Html::tag('h3', 'Collapsible'));
+        $collapsible->add(Html::tag('p', 'Test1'));
+        $collapsible->add(Html::tag('p', 'Test2'));
+
+        $this->add($collapsible);
 
         switch ($this->type) {
             case null:
